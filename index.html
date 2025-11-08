@@ -81,7 +81,13 @@ map.on('load', async () => {
 
   // Optional: restrict panning/zooming to region bounds
   const bounds = turf.bbox(paysDeLaLoire);
-  map.setMaxBounds(bounds);
+  const expandedBounds = [
+    bounds[0] - 1,  // west
+    bounds[1] - 1,  // south
+    bounds[2] + 1,  // east
+    bounds[3] + 1   // north
+  ];
+  map.setMaxBounds(expandedBounds);
 });
 </script>
 </body>
